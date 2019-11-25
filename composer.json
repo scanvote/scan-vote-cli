@@ -5,7 +5,8 @@
         "aferrandini/phpqrcode": "^1.0",
         "splitbrain/php-cli": "^1.1",
         "symfony/console": "2.*|3.*",
-        "symfony/process": "2.*|3.*"
+        "symfony/process": "2.*|3.*",
+        "zendframework/zend-http": "^2.10"
     },
     "license": "MIT",
     "authors": [
@@ -16,7 +17,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Leo108\\ConsoleQrCode\\": "src/"
+            "Leo108\\ConsoleQrCode\\": "src/",
+            "ScanVote\\": "ScanVote/"
         }
     },
     "bin": [

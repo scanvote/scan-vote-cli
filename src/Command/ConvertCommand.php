@@ -9,6 +9,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use PHPQRCode\QRcode;
+use ScanVote\ScanCLI;
 
 class ConvertCommand extends Command
 {
@@ -57,6 +58,7 @@ class ConvertCommand extends Command
             $output->writeln(str_repeat($map[0], $lrPadding));
         }
         $after .= "Visit https://sandiego.walmart.scan.vote and scan to vote! \n";
+	$after .= 
         $output->write($after);
     }
 

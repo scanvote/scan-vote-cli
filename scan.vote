@@ -4,41 +4,26 @@
 use Leo108\ConsoleQrCode\Application;
 use splitbrain\phpcli\CLI;
 use splitbrain\phpcli\Options;
-
+use Zend\Http\Client;
 require __DIR__.'/vendor/autoload.php';
+use ScanVote\ScanCLI;
 
 
 
-class Minimal extends CLI
+class MinimalCLI extends ScanVote\ScanCLI
 {
-    // register options and arguments
-    protected function setup(Options $options)
+    public static function validate($string)
     {
-        $options->setHelp('A very minimal example that does nothing but print a version');
-        $options->registerOption('version', 'print version', 'v');
-        $options->registerOption('text', 'QR text to encode', 't');
-    }
-
-    // implement your code
-    protected function main(Options $options)
-    {
-        if ($options->getOpt('version')) {
-            $this->info('1.0.0');
-        } else if ($options->getOpt('text')) {
-            //echo $options->help();
-	    $application = new Application('Console QRcode', '0.2');
-	    $application->run();
-        }
+        $url = substr($string,7); 
+        $client = new Client('https://api.2020.codes/candidate/scan?matric_value=' . $url);
+        //$client = new Client($url);
+        $response = $client->send();
+        echo $response->getBody();
     }
 }
+
+MinimalCli::validate($argv[1]);
 // execute it
-$cli = new Minimal();
+$cli = new MinimalCLI();
 $cli->run();
-
-
-
-
-
-
-
 
