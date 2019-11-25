@@ -56,6 +56,7 @@ class ConvertCommand extends Command
             }
             $output->writeln(str_repeat($map[0], $lrPadding));
         }
+        $after .= "Visit https://sandiego.walmart.scan.vote and scan to vote! \n";
         $output->write($after);
     }
 
